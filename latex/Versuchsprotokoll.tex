@@ -1,0 +1,33 @@
+\documentclass[a4paper,12pt]{article}
+
+\input{preamble/preamble.tex}
+\setcounter{module}{0} % change the value of \themodule, (\themodule also used in the preamble title)
+
+% Titelinformationen
+\title{Versuchsprotokoll \themodule}
+\author{Vincent Fricke\\Florian Hirche\\Christian Saddai}
+\date{\today}
+
+% Seiten Header
+\fancyhead[L]{Versuch \themodule}    % Links
+\fancyhead[R]{\today}       % Rechts
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+% Einbinden der Segmente
+\include{content/einleitung.tex}
+
+\include{content/theorie.tex}
+\include{content/voraufgaben.tex}
+
+\include{content/versuchsaufgaben.tex}
+
+\include{content/fazit.tex}
+
+\printbibliography
+
+\end{document}

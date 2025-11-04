@@ -1,0 +1,48 @@
+\usepackage{tcolorbox} % Colorbox
+
+\tcbuselibrary{skins} % Optional, for advanced styling
+\tcbset{
+	task/.style={
+			colframe=purple!80!blue,          % Border color
+			colback=purple!5!blue!5,          % Lighter background
+			coltitle=purple!90!blue,          % Title text color
+			fonttitle=\bfseries,               % Bold title
+			boxrule=1pt,                       % Border thickness
+			arc=4mm,                           % Rounded corners
+			top=2mm, bottom=2mm, left=3mm, right=3mm, % Padding
+			enhanced,                          % Required for shadow and arc
+			drop shadow, %={shadow xshift=1mm, shadow yshift=-1mm, fill=purple!20!blue!30}, % Subtle shadow
+			boxed title style={
+					colframe=purple!80!blue,
+					colback=purple!30!blue!10,
+					sharp corners,
+					fontupper=\bfseries,
+					boxrule=0.8pt,
+				},
+			attach boxed title to top center={yshift=-3mm},  % Titel weiter nach unten
+			title={Task},
+			before upper={\vspace{1mm}},  % Einrücken des Boxtextes
+		},
+	result/.style={
+			colframe=blue!70!black,       % Border color
+			colback=blue!10!white,        % Background color
+			coltitle=blue!70!black,       % Title color
+			fonttitle=\bfseries,          % Title font
+			title={\textbf{Result}},      % Default title
+			boxrule=1pt,                  % Border thickness
+			attach boxed title to top left={xshift=2mm, yshift=-2mm},
+			boxed title style={colframe=blue!70!black, colback=blue!30!white},
+			drop shadow={blue!50!black},  % Optional shadow
+		},
+	aufgabe/.style={
+			colback=gray!5,
+			colframe=gray!70!black,
+			boxrule=0.8pt,
+			arc=2mm,
+			outer arc=2mm,
+			left=3mm,
+			right=3mm,
+			top=2mm,
+			bottom=2mm
+		},
+}

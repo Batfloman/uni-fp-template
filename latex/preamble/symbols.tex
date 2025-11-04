@@ -1,0 +1,60 @@
+\ExplSyntaxOn
+% Define the main property list (stores symbols)
+\prop_new:N \l_my_data_prop
+\prop_new:N \l_tmp_prop  % Define once, clear it before reuse
+
+% Define a command to add symbols with properties
+\NewDocumentCommand{\definesym}{m m O{}}
+{
+  % Clear the temporary property list before reuse
+  \prop_clear:N \l_tmp_prop
+  \prop_put:Nnn \l_tmp_prop { math } { #2 }
+  \prop_put:Nnn \l_tmp_prop { desc } { #3 }
+
+  % Store the temporary property list in the main list under "key"
+  \prop_put:NnV \l_my_data_prop { #1 } \l_tmp_prop
+}
+
+% Define a command to print only the math symbol
+\NewDocumentCommand{\sym}{m}
+{
+  \prop_if_in:NnTF \l_my_data_prop { #1 }
+    {
+      \prop_get:NnN \l_my_data_prop { #1 } \l_tmp_prop % Retrieve inner prop
+      \prop_get:NnN \l_tmp_prop { math } \l_tmp_tl     % Extract 'math' property
+      \tl_if_empty:NF \l_tmp_tl
+        { \ensuremath{\l_tmp_tl} } % Ensure math mode
+    }
+    { \textbf{?Sym?} } % Handle non-existent key
+}
+
+\NewDocumentCommand{\symdesc}{m}
+{
+    \prop_get:NnN \l_my_data_prop { #1 } \l_tmp_prop % Retrieve inner prop
+    \prop_get:NnN \l_tmp_prop { desc } \l_tmp_tl     % Extract 'desc' property
+    \tl_if_empty:NTF \l_tmp_tl
+        {} % No Description 
+        { \l_tmp_tl } % Print the actual description
+}
+
+\NewDocumentCommand{\symtext}{m}{
+  \prop_if_in:NnTF \l_my_data_prop { #1 }
+    {
+      \symdesc{#1}~\sym{#1}
+    }
+    { \textbf{??} } % Handle non-existent key
+}
+
+\NewDocumentCommand{\makesymtable}{}
+{
+  \begin{tabular}{c|l}
+    \textbf{Symbol} & \textbf{Description} \\
+    \hline
+    \prop_map_inline:Nn \l_my_data_prop
+    {
+        \hypertarget{sym:##1}{\sym{##1}} & \symdesc{##1} \\
+    }
+  \end{tabular}
+}
+
+\ExplSyntaxOff

@@ -1,0 +1,67 @@
+% Settings
+\usepackage[ngerman]{babel} % Deutsche Spracheinstellungen
+\usepackage[utf8]{inputenc} % UTF-8 Zeichenkodierung
+
+% Quellen
+\usepackage{biblatex} % Literaturverzeichnis
+\addbibresource{preamble/quellen.bib} % externe BibTeX-Datei
+
+% Math
+\usepackage{amsmath, amssymb} % Mathematik-Pakete
+\usepackage{bm}        % For bold symbols
+\usepackage{siunitx} % SI Units
+\usepackage{expl3} % expl3 syntax
+
+% Images
+\usepackage{graphicx} % Bilder einfügen
+\usepackage{tikz} % TikZ
+\usetikzlibrary{patterns}
+\usepackage{subcaption}
+\usepackage{placeins} % \FloatBarrier
+\usepackage{float} % For [H] placement of figures
+
+% Functionality
+\usepackage{hyperref} % Hyperlinks
+\usepackage[all]{hypcap} % better Hyperlinks auf Abbildungen
+
+% Style
+\usepackage{geometry} % Seitenränder
+\geometry{a4paper, margin=2.5cm}
+\usepackage[autostyle]{csquotes} % \enquote
+\usepackage{booktabs} % For professional-looking tables
+\usepackage{tocloft} % Heading-number padding
+\usepackage{fancyhdr} % Seiten Headers
+\pagestyle{fancy}
+\usepackage{tcolorbox} % Colorbox
+
+% used for relative imports from this file, so that the preamble can be used from anywhere
+\usepackage{import}
+% fancy color boxes
+\input{preamble/tcolorbox.tex}
+\input{preamble/symbols.tex}
+
+\newcounter{module}
+\setcounter{module}{0}
+
+\selectlanguage{ngerman}
+
+\setlength{\headheight}{15pt}
+
+% \makeatletter
+% \renewcommand{\section}[1]{%
+%   \gdef\CurrentSection{#1}%
+%   \@startsection{section}{1}{\z@}{-3.5ex \@plus -1ex \@minus -.2ex}%
+%   {2.3ex \@plus .2ex}{\normalfont\Large\bfseries}%
+%   {#1}%
+% }
+% \makeatother
+
+% Titelinformationen
+% \title{Versuchsprotokoll \themodule}
+% \author{Vincent Fricke\\Florian Hirche\\Christian Saddai}
+% \date{\today}
+
+% Seiten Header
+% \fancyhead[L]{Versuch \themodule}    % Links
+% \fancyhead[C]{\CurrentSection} % Mitte
+% \fancyhead[R]{\today}       % Rechts

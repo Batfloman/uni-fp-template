@@ -1,2 +1,3 @@
+.venv/
 latex/build/*
 !latex/build/*.pdf

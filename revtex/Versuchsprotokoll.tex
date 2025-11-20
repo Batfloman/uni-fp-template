@@ -1,0 +1,34 @@
+\documentclass[twocolumn,secnumarabic,amssymb, nobibnotes, aps, prd]{revtex4-2}
+%\usepackage{acrofont}%NOTE: Comment out this line for the release version!
+% \newcommand{\revtex}{REV\TeX\ }
+% \newcommand{\classoption}[1]{\texttt{#1}}
+% \newcommand{\macro}[1]{\texttt{\textbackslash#1}}
+% \newcommand{\m}[1]{\macro{#1}}
+% \newcommand{\env}[1]{\texttt{#1}}
+% \setlength{\textheight}{9.5in}
+
+\input{preamble/preamble.tex}
+
+\newcommand{\themodule}{0}
+\newcommand{\thetitle}{VersuchX}
+
+\begin{document}
+
+\title{Versuchsprotokoll \themodule~- \thetitle}
+
+\author{Vincent Fricke \\ Florian Hirche}
+% \email[REVTeX Support: ]{revtex@aps.org}
+% \affiliation{1 Research Road, Ridge, NY 11961}
+\date{\today}%
+\maketitle
+\tableofcontents
+
+\input{content/einleitung.tex}
+\input{content/arbeitsweise.tex}
+\input{content/versuchsteile/1.tex}
+\input{content/versuchsteile/2.tex}
+
+\bibliographystyle{apsrev4-2}
+\bibliography{preamble/quellen}
+
+\end{document}

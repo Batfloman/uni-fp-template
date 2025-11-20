@@ -9,8 +9,18 @@ not_taken = DataCluster(data[-1:])
 
 for row in taken_data:
     row["x"] = Measurement(row["x"], .2)
+    row["x^2"] = row["x"]**2
 
 print(taken_data)
+
+# saving data 
+taken_data.metadata_manager.set_metadata("x", name="Größe x", unit="Hz")
+taken_data.metadata_manager.set_metadata("y", name="Größe y")
+taken_data.save_latex(rel_path("../output/linear_fit/data", __file__), exclude_indicies=["x^2"])
+
+# --------------------
+# fitting
+
 
 # fit:
 # currently only least-squares-fit
@@ -30,10 +40,19 @@ fit_res_odr = graph_fit.Linear.odr_fit(
 )
 # idk, maybe gives better/worse values...
 
+# --------------------
+# saving plot params
+m, n = fit_res.params["m"], fit_res.params["n"]
+m.save_latex(rel_path("../output/linear_fit/m", __file__))
+n.save_latex(rel_path("../output/linear_fit/n", __file__))
+m_odr, n_odr = fit_res_odr.params["m"], fit_res_odr.params["n"]
+m_odr.save_latex(rel_path("../output/linear_fit/m_odr", __file__))
+n_odr.save_latex(rel_path("../output/linear_fit/n_odr", __file__))
+
 # ==================================================
 # plotting
 
-plot = graph.create_plot(figsize=(8,5))
+plot = graph.create_plot(figsize=(6,3.5))
 # alternative, the mathplotlib.pyplot (plt) is exposed:
 # plot = graph.plt.subplots()
 
@@ -55,6 +74,11 @@ line_res_odr = graph.plot_func(fit_res_odr, plot=plot, with_error=True, change_v
 #     line_res.fill.remove()
 
 ax.legend(loc="upper left", bbox_to_anchor=(1,1))
+ax.set_title("Plot example")
+ax.set_xlabel(r"Größe x in Hz")
+ax.set_ylabel(r"Größe y")
+
 graph.plt.tight_layout()
+graph.save_plot(plot, rel_path("../output/linear_fit/plot_example.png", __file__))
 
 graph.plt.show()

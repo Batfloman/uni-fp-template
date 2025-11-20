@@ -1,1 +1,29 @@
 \section{Bestimmung von Y}
+
+In diesem Versuchsteil wird die Größe $Y$ durch ... ermittelt.
+Dafür werden dies und das gemacht.
+
+\subsection{Druchführung / Messung}
+
+Wir machen natürlich alles so, wie es die Versuchsanleitung möchte.
+
+\subsection{Auswertung / Analyse}
+
+Wir haben die Daten aus Tabelle~\ref{tab:linear-fit-datenpunkte} und fitten eine einfache Gerade:
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\linewidth]{../output/linear_fit/plot_example.png}
+	\caption{Example linear Fit: wir fitten die Daten aus Tab.~\ref{tab:linear-fit-datenpunkte} mit einer Funktion $y = mx + b$ an, wobei in userem Fall $x \hat{~=~} \nu$ (Frequenz) und $y \hat{~=~} G$ (Gain) gilt. Wir vergleichen einen \texttt{orthogonal-distance-regression} Fit mit einem einfachen \texttt{least-squares} Fit (beides mithilfe von scipy).}
+\end{figure}
+
+Die Parameter des \texttt{least-squares} Fits ergeben:
+$$
+	m = \input{../output/linear_fit/m.tex},\qquad n = \input{../output/linear_fit/n.tex}
+$$
+
+Die Parameter des \texttt{odr} Fits ergeben:
+$$
+	m^\texttt{ord} = \input{../output/linear_fit/m_odr.tex},\qquad n^\texttt{odr} = \input{../output/linear_fit/n_odr.tex}
+$$
+
+Wir sehen, dass die Fehler auf die Parameter des \texttt{odr}-Fits größer sind, dies macht Sinn, da dieser auch die Unsicherheiten in $x$ berücksichtigt.
